@@ -12,6 +12,10 @@ margin-right: 5px;
 margin-bottom: 5px;
 }
 
+div{
+	display:inline;
+}
+
 .postRequest {
 margin-top: 50px;
 }

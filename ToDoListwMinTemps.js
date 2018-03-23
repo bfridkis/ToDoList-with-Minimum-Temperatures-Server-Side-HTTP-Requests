@@ -78,13 +78,10 @@ app.post('/toDoList',function(req,res,next){
 						    context.toDoItemCount = req.session.toDoItems.length;
 						    context.toDoItems = req.session.toDoItems;
 							if(context.toDoItemCount === 1){
-								res.render('toDoListSingular',context);
-								return;
+								context.singular = true;
 							}
-							else{
-								res.render('toDoList', context);
-								return;
-							}
+							res.render('toDoList', context);
+							return;
 						}
 						else{
 							console.log(err);
@@ -112,23 +109,18 @@ app.post('/toDoList',function(req,res,next){
 		  context.toDoItemCount = req.session.toDoItems.length;
 		  context.toDoItems = req.session.toDoItems;
 		  if(context.toDoItemCount === 1){
-			res.render('toDoListSingular',context);
-			return
+			context.singular = true;
 			}
-		  else{
-			res.render('toDoList', context);
-			return;
-		}
+		  res.render('toDoList', context);
+		  return;
 	  }
 	  context.user = req.session.name;
 	  context.toDoItemCount = req.session.toDoItems.length;
 	  context.toDoItems = req.session.toDoItems;
 	  if(context.toDoItemCount === 1){
-		res.render('toDoListSingular',context);
+		context.singular = true;
 		}
-	  else{
-			res.render('toDoList', context);
-		}
+	  res.render('toDoList', context);
     }
  });
 
