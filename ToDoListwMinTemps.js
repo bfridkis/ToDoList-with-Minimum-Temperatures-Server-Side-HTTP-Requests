@@ -96,7 +96,8 @@ app.post('/toDoList',function(req,res,next){
 			  if(response){
 				  console.log(response.statusCode);
 			  }
-		  next(err);
+			req.session.toDoItems.pop(); 
+			next(err);
 		  }  
 		});
     }
