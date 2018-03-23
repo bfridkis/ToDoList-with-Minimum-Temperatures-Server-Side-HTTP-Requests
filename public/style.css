@@ -1,3 +1,17 @@
 body {
 background-color : beige;
 }
+
+label {
+margin-right: 5px;
+margin-bottom: 5px;
+}
+
+input {
+margin-right: 5px;
+margin-bottom: 5px;
+}
+
+.postRequest {
+margin-top: 10px;
+}
