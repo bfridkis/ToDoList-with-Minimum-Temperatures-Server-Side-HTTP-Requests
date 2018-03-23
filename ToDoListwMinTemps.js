@@ -29,11 +29,9 @@ app.get('/',function(req,res,next){
   context.toDoItems = req.session.toDoItems || [];
   //console.log(context.toDo);
   if(context.toDoItemCount === 1){
-	res.render('toDoListSingular',context);
+	context.singular = true;
   }
-  else{
 	res.render('toDoList', context);
-  }
 });
 
 app.post('/toDoList',function(req,res,next){

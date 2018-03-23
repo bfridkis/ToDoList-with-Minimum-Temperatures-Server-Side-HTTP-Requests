@@ -1,15 +1,19 @@
 <h1>{{user}}'s List</h1>
-<h2>You have {{toDoItemCount}} items on your list.</h2>
+{{#if singular}}
+<h2>You have {{toDoItemCount}} item on your list.</h2>
+{{#else}}
+<h2>You have {{toDoItemCount}} item on your list.</h2>
+{{/if}}
 {{#if toDoItems}}
 	<ul>
 		{{#each toDoItems}}
 		<li>
 			{{#if this.atMinTemp}}
-				<h3 style="background-color:green">{{this.ItemName}} {{this.city}} Required Temp: {{this.minTemp}}
-					Current Temp: {{this.temp}}</h3>
+				<h3><div style="background-color:green">{{this.ItemName}} {{this.city}} Required Temp: {{this.minTemp}}
+					Current Temp: {{this.temp}}&#8457;</div></h3>
 			{{else}}
-				<h3 style="background-color:red">{{this.ItemName}} {{this.city}} Required Temp: {{this.minTemp}}
-					Current Temp: {{this.temp}}</h3>
+				<h3><div style="background-color:red">{{this.ItemName}} {{this.city}} Required Temp: {{this.minTemp}}
+					Current Temp: {{this.temp}}&#8457;</div></h3>
 			{{/if}}
 			<form action="/toDoList" method="post">
 				<input type="submit" name="done" value="Mark Item As Done">
