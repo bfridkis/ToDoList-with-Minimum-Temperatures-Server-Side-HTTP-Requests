@@ -1,0 +1,39 @@
+<h1>{{user}}'s List</h1>
+<h2>You have {{toDoItemCount}} item on your list.</h2>
+{{#if toDoItems}}
+	<ul>
+		{{#each toDoItems}}
+		<li>
+			{{#if this.atMinTemp}}
+				<h3 style="background-color:green">{{this.ItemName}} {{this.city}} Required Temp: {{this.minTemp}}
+					Current Temp: {{this.temp}}</h3>
+			{{else}}
+				<h3 style="background-color:red">{{this.ItemName}} {{this.city}} Required Temp: {{this.minTemp}}
+					Current Temp: {{this.temp}}</h3>
+			{{/if}}
+			<form action="/toDoList" method="post">
+				<input type="submit" name="done" value="Mark Item As Done">
+				<input type="hidden" name="id" value="{{this.id}}">
+			</form>
+		</li>
+		{{/each}}
+	</ul>
+<br />
+{{/if}}
+<h3>Post Content</h3>
+{{externalPostRequest}}
+<br />
+<br />
+<form action="/toDoList" method="post">
+	<label for="itemToAdd">Add Item:</label>
+	<input type="text" name="itemToAdd">
+	<label for="cityDesignation">Designate City:</label>
+	<input type="text" name="cityDesignation">
+	<label for="minTemp">Minimum Temp:</label>
+	<input type="text" name="minTemp">
+	current temp: {{#if openWMResponse}} {{openWMResponse}} {{/if}}
+	<input type="submit" name="Add Item" value="Add Item" />
+	<br />
+	<label for="optionalPostRequest">Optional: Post Request</label>
+	<input type ="text" name="externalPostRequestContent">
+</form>
