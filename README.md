@@ -5,4 +5,4 @@ User inputs "To Do" items along with a city and minimum temperature. A server si
 
 There is also a server-side POST reqeust to httpbin.org which displays the user's input back to the user. 
 
-Uses nodejs and express.
+Uses Nodejs and Express.
