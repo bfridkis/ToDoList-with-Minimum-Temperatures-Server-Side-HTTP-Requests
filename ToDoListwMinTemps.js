@@ -50,7 +50,7 @@ app.post('/toDoList',function(req,res,next){
 
   if(req.body.itemToAdd){
     req.session.toDoItems.push({"ItemName":req.body.itemToAdd, "id":req.session.curId, 
-									"city": req.body.cityDesignation, "Minimum Temp":
+									"city": req.body.cityDesignation, "MinimumTemp":
 									Number(req.body.minTemp)});
     req.session.curId++;
 	request(openWMURL+req.session.toDoItems[req.session.toDoItems.length - 1].city
@@ -58,7 +58,7 @@ app.post('/toDoList',function(req,res,next){
 	  if(!err & response.statusCode < 400){
 		  req.session.toDoItems[req.session.toDoItems.length - 1].temp = Number(JSON.parse(body).main.temp);
 		  if(req.session.toDoItems[req.session.toDoItems.length - 1].temp >= 
-			 req.session.toDoItems[req.session.toDoItems.length - 1]["Minimum Temp"]){
+			 req.session.toDoItems[req.session.toDoItems.length - 1]["MinimumTemp"]){
 				req.session.toDoItems[req.session.toDoItems.length - 1].atMinTemp = true;
 			 }
 		  else{
@@ -113,6 +113,10 @@ app.post('/toDoList',function(req,res,next){
 			}
 		  res.render('toDoList', context);
 		  return;
+	  }
+	  if(req.body.clear){
+		  req.session.toDoItems = [];
+		  req.session.curId = 0;
 	  }
 	  context.user = req.session.name;
 	  context.toDoItemCount = req.session.toDoItems.length;
