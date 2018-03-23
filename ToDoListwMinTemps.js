@@ -15,7 +15,7 @@ var openWMURL = "http://api.openweathermap.org/data/2.5/weather?q=";
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
-app.set('port', 6703);
+app.set('port', process.env.PORT || 5000);
 
 app.get('/',function(req,res,next){
   var context = {};
