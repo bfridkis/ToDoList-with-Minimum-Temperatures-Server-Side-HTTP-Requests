@@ -9,10 +9,10 @@
 		{{#each toDoItems}}
 		<li>
 			{{#if this.atMinTemp}}
-				<h3><div style="background-color:lawngreen">{{this.ItemName}} {{this.city}} Required Temp: {{this.MinimumTemp}}
+				<h3><div style="background-color:lawngreen">{{this.ItemName}} {{this.city}} Required Temp: {{this.MinimumTemp}}&#8457;
 					Current Temp: {{this.temp}}&#8457;</div></h3>
 			{{else}}
-				<h3><div style="background-color:red">{{this.ItemName}} {{this.city}} Required Temp: {{this.MinimumTemp}}
+				<h3><div style="background-color:red">{{this.ItemName}} {{this.city}} Required Temp: {{this.MinimumTemp}}&#8457;
 					Current Temp: {{this.temp}}&#8457;</div></h3>
 			{{/if}}
 			<form action="/toDoList" method="post">
@@ -42,5 +42,5 @@
 	<input type ="text" name="externalPostRequestContent" class="postRequest">
 </form>
 <form action="/toDoList" method="post">
-	<input type="submit" name="clear" value="Clear List">
+	<input id="clear" type="submit" name="clear" value="Clear List">
 </form>
